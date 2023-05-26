@@ -13,12 +13,17 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+mongock:
+  migration-scan-package:
+    - com.wf.ahp.config.dbmigrations
+  mongo-db:
+    read-concern: local
+    write-concern:
+      journal: false
+
 spring:
   application:
     name: quickgrab
-  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
-  liquibase:
-    contexts: test
   jackson:
     serialization:
       write-durations-as-timestamps: false
@@ -72,7 +77,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: MDcyNTI1ZjUzZjZjNzc4MGRjMWE4NDZkNWE2YzI2OWE3YjYwNWYzNzU5YTk1NmVmMjNkMzYyZjVlMmM5NDE3ZWVhNDY0NmIyZGNjNmUxMDg4MTk0ZDY0ZTNiZTBmOWM0YjIwYjBiZWQ3YTRjOGVhZjEwNWZjOWU4OWI5MzVlOWM=
+        base64-secret: NTRhZjU2MzkzNjRiNzdkYWFkMjdkMTI0ZDgxOTg0MDdlOWIzMDJjNDhkMTFmYzk2NjNmMmIzNzRiMmM5Y2MxYTI1OTc3YjMzZDM4NDE1YTk5NTk3MGNiMTNjOTc1M2Y4NGFjYzM3YTlmNzMzMmI4ZWM3MTExODA0ZWIwMWQ1ZDc=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 

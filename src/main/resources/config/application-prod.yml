@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    com.wf.qb: INFO
+    com.wf.ahp: INFO
 
 management:
   metrics:
@@ -31,19 +31,10 @@ spring:
       enabled: false
     livereload:
       enabled: false
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/quickgrab
-    username: quickgrab
-    password:
-    hikari:
-      poolName: Hikari
-      auto-commit: false
-  jpa:
-    database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
-  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
-  liquibase:
-    contexts: prod
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: quickgrab
   mail:
     host: localhost
     port: 25
@@ -97,7 +88,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: MDcyNTI1ZjUzZjZjNzc4MGRjMWE4NDZkNWE2YzI2OWE3YjYwNWYzNzU5YTk1NmVmMjNkMzYyZjVlMmM5NDE3ZWVhNDY0NmIyZGNjNmUxMDg4MTk0ZDY0ZTNiZTBmOWM0YjIwYjBiZWQ3YTRjOGVhZjEwNWZjOWU4OWI5MzVlOWM=
+        base64-secret: NTRhZjU2MzkzNjRiNzdkYWFkMjdkMTI0ZDgxOTg0MDdlOWIzMDJjNDhkMTFmYzk2NjNmMmIzNzRiMmM5Y2MxYTI1OTc3YjMzZDM4NDE1YTk5NTk3MGNiMTNjOTc1M2Y4NGFjYzM3YTlmNzMzMmI4ZWM3MTExODA0ZWIwMWQ1ZDc=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

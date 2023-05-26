@@ -18,34 +18,22 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.wf.qb: DEBUG
+    com.wf.ahp: DEBUG
 
 spring:
   devtools:
     restart:
       enabled: true
-      additional-exclude: static/**,.h2.server.properties
+      additional-exclude: static/**
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
   jackson:
     serialization:
       indent-output: true
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/db/quickgrab;DB_CLOSE_DELAY=-1;MODE=LEGACY
-    username: quickgrab
-    password:
-    hikari:
-      poolName: Hikari
-      auto-commit: false
-  h2:
-    console:
-      # disable spring boot built-in h2-console since we start it manually with correct configuration
-      enabled: false
-  jpa:
-  liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: quickgrab
   mail:
     host: localhost
     port: 25
@@ -81,7 +69,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: MDcyNTI1ZjUzZjZjNzc4MGRjMWE4NDZkNWE2YzI2OWE3YjYwNWYzNzU5YTk1NmVmMjNkMzYyZjVlMmM5NDE3ZWVhNDY0NmIyZGNjNmUxMDg4MTk0ZDY0ZTNiZTBmOWM0YjIwYjBiZWQ3YTRjOGVhZjEwNWZjOWU4OWI5MzVlOWM=
+        base64-secret: NTRhZjU2MzkzNjRiNzdkYWFkMjdkMTI0ZDgxOTg0MDdlOWIzMDJjNDhkMTFmYzk2NjNmMmIzNzRiMmM5Y2MxYTI1OTc3YjMzZDM4NDE1YTk5NTk3MGNiMTNjOTc1M2Y4NGFjYzM3YTlmNzMzMmI4ZWM3MTExODA0ZWIwMWQ1ZDc=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
